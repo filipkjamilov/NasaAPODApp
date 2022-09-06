@@ -35,7 +35,6 @@ class APODViewModel: ObservableObject {
         }.resume()
     }
     
-    
     private func convertDateToString(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd"

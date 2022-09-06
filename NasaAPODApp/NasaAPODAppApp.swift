@@ -6,7 +6,10 @@ import SwiftUI
 struct NasaAPODAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                DashboardView()
+                    .navigationBarTitle("Astronomy pictures", displayMode: .automatic)
+            }
         }
     }
 }
