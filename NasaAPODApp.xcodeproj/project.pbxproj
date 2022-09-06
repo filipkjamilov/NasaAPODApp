@@ -14,6 +14,12 @@
 		0256381528C66FAC006E609F /* NasaAPODAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0256381428C66FAC006E609F /* NasaAPODAppTests.swift */; };
 		0256381F28C66FAC006E609F /* NasaAPODAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0256381E28C66FAC006E609F /* NasaAPODAppUITests.swift */; };
 		0256382128C66FAC006E609F /* NasaAPODAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0256382028C66FAC006E609F /* NasaAPODAppUITestsLaunchTests.swift */; };
+		0256382F28C670BE006E609F /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0256382E28C670BE006E609F /* ImageLoader.swift */; };
+		0256383328C67B4F006E609F /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0256383228C67B4F006E609F /* ImageCache.swift */; };
+		0256383528C67DD4006E609F /* CachedImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0256383428C67DD4006E609F /* CachedImageManager.swift */; };
+		0256383728C67E22006E609F /* CachedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0256383628C67E22006E609F /* CachedImage.swift */; };
+		0256383A28C68CA6006E609F /* APODData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0256383928C68CA6006E609F /* APODData.swift */; };
+		0256383E28C69C11006E609F /* APODViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0256383D28C69C11006E609F /* APODViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +50,12 @@
 		0256381A28C66FAC006E609F /* NasaAPODAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NasaAPODAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0256381E28C66FAC006E609F /* NasaAPODAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaAPODAppUITests.swift; sourceTree = "<group>"; };
 		0256382028C66FAC006E609F /* NasaAPODAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaAPODAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0256382E28C670BE006E609F /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		0256383228C67B4F006E609F /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		0256383428C67DD4006E609F /* CachedImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImageManager.swift; sourceTree = "<group>"; };
+		0256383628C67E22006E609F /* CachedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImage.swift; sourceTree = "<group>"; };
+		0256383928C68CA6006E609F /* APODData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODData.swift; sourceTree = "<group>"; };
+		0256383D28C69C11006E609F /* APODViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +106,11 @@
 		0256380228C66FAA006E609F /* NasaAPODApp */ = {
 			isa = PBXGroup;
 			children = (
+				0256383C28C69BFB006E609F /* viewModel */,
+				0256383B28C69BF5006E609F /* view */,
+				0256383828C68C78006E609F /* model */,
+				0256382D28C670B2006E609F /* util */,
 				0256380328C66FAA006E609F /* NasaAPODAppApp.swift */,
-				0256380528C66FAA006E609F /* ContentView.swift */,
 				0256380728C66FAC006E609F /* Assets.xcassets */,
 				0256380928C66FAC006E609F /* Preview Content */,
 			);
@@ -125,6 +140,41 @@
 				0256382028C66FAC006E609F /* NasaAPODAppUITestsLaunchTests.swift */,
 			);
 			path = NasaAPODAppUITests;
+			sourceTree = "<group>";
+		};
+		0256382D28C670B2006E609F /* util */ = {
+			isa = PBXGroup;
+			children = (
+				0256382E28C670BE006E609F /* ImageLoader.swift */,
+				0256383228C67B4F006E609F /* ImageCache.swift */,
+				0256383428C67DD4006E609F /* CachedImageManager.swift */,
+				0256383628C67E22006E609F /* CachedImage.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		0256383828C68C78006E609F /* model */ = {
+			isa = PBXGroup;
+			children = (
+				0256383928C68CA6006E609F /* APODData.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0256383B28C69BF5006E609F /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0256380528C66FAA006E609F /* ContentView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0256383C28C69BFB006E609F /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0256383D28C69C11006E609F /* APODViewModel.swift */,
+			);
+			path = viewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +307,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0256383328C67B4F006E609F /* ImageCache.swift in Sources */,
+				0256383A28C68CA6006E609F /* APODData.swift in Sources */,
+				0256383528C67DD4006E609F /* CachedImageManager.swift in Sources */,
 				0256380628C66FAA006E609F /* ContentView.swift in Sources */,
+				0256383728C67E22006E609F /* CachedImage.swift in Sources */,
 				0256380428C66FAA006E609F /* NasaAPODAppApp.swift in Sources */,
+				0256383E28C69C11006E609F /* APODViewModel.swift in Sources */,
+				0256382F28C670BE006E609F /* ImageLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
