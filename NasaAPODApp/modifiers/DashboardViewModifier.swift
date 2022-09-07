@@ -25,7 +25,7 @@ struct DashboardViewModifier: ViewModifier {
 }
 
 extension View {
-
+    
     // Custom modifier for loading the view
     func viewDidLoad(perform action: (() -> Void)?) -> some View {
         modifier(DashboardViewModifier(perform: action))
