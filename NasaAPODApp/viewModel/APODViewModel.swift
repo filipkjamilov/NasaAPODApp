@@ -19,14 +19,29 @@ class APODViewModel: ObservableObject {
     
     @Published var data: [APODData] = []
     
-    func fetchData(startDate: Date = Date.now, endDate: Date = Date.now) {
-                
-        let url = "\(apiUrl)&start_date=\(Date.convertDateToString(date: startDate))&end_date=\(Date.convertDateToString(date: endDate))"
-        guard let url = URL(string: url) else {
-            // TODO: FKJ - Handle error or throw
-            return
-        }
-                
+    // TODO: FKJ - Temporary solution to take the picture from the previous day,
+    // as the server date and the local date are not the same.
+    public var endDate: Date = Calendar.current.date(byAdding: .day, value: -1, to: .now)!
+    public var startDate: Date = Calendar.current.date(byAdding: .day, value: -5, to: .now)!
+    
+    public func fetchOnViewDidLoad() {
+        fetchData(from: startDate, to: endDate)
+    }
+    
+    public func loadMore() {
+        self.endDate = Calendar.current.date(byAdding: .day, value: -1, to: self.startDate)!
+        self.startDate = Calendar.current.date(byAdding: .day, value: -6, to: self.endDate)!
+        fetchData(from: startDate, to: endDate)
+    }
+    
+    // MARK: -
+    
+    private func fetchData(from start: Date = Date.now, to end: Date = Date.now) {
+        
+        let url = "\(apiUrl)&start_date=\(Date.convertDateToString(date: start))&end_date=\(Date.convertDateToString(date: end))"
+        
+        guard let url = URL(string: url) else { return }
+        
         URLSession.shared.dataTask(with: url) { data, _, error in
             if let data = data {
                 do {
@@ -35,13 +50,15 @@ class APODViewModel: ObservableObject {
                         self.data.insert(contentsOf: decodedData, at: 0)
                     }
                 } catch {
-                    // TODO: FKJ - Handle error or throw
-                    print("Wrong!")
-                    print(error)
+                    self.handleError(with: error)
                 }
             }
             
         }.resume()
+    }
+    
+    private func handleError(with error: Error){
+        print("Error occurred!")
     }
     
 }

@@ -31,14 +31,6 @@ struct CachedImage<Content: View>: View {
     }
 }
 
-struct CachedImage_Previews: PreviewProvider {
-    static var previews: some View {
-        CachedImage(url: "https://apod.nasa.gov/apod/image/2209/CarinaCliffs_Webb_1080.jpg") { _ in
-            EmptyView()
-        }
-    }
-}
-
 extension CachedImage {
     enum CachedImageError: Error {
         case invalidData

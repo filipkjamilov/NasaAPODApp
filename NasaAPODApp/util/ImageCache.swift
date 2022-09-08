@@ -25,6 +25,4 @@ class ImageCache {
         cache.setObject(object, forKey: key)
     }
     
-    
-    
 }

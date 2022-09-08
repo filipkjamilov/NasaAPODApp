@@ -14,8 +14,8 @@ struct DetailsView: View {
                     DetailsWidgetGradient()
                     
                     VStack(alignment: .center) {
-                        CachedImage(url: apodData.url) { phase in
-                            switch phase {
+                        CachedImage(url: apodData.url) { state in
+                            switch state {
                             case .empty:
                                 ProgressView()
                                     .frame(height: 200)
@@ -52,6 +52,7 @@ struct DetailsView: View {
                     }
                 }
             }
+            .padding(.top, 0)
             .padding(.leading, 15)
             .padding(.trailing, 15)
         }
