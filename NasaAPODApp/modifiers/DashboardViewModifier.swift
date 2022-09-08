@@ -1,6 +1,5 @@
 //  Created by Filip Kjamilov on 6.9.22.
 
-import Foundation
 import SwiftUI
 
 struct DashboardViewModifier: ViewModifier {
@@ -26,7 +25,7 @@ struct DashboardViewModifier: ViewModifier {
 
 extension View {
     
-    // Custom modifier for loading the view
+    // Custom modifier for checking if the view did load.
     func viewDidLoad(perform action: (() -> Void)?) -> some View {
         modifier(DashboardViewModifier(perform: action))
     }

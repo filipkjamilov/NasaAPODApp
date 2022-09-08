@@ -7,8 +7,7 @@ public extension Date {
     static func convertDateToString(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd"
-        // TODO: FKJ - Do not minus a day in here, separation of concerns.
-        return dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: -1, to: date)!)
+        return dateFormatter.string(from: date)
     }
     
 }

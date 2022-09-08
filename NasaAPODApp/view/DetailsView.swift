@@ -10,38 +10,29 @@ struct DetailsView: View {
         ZStack {
             ScrollView {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 30)
-                        .fill(LinearGradient(colors: [Color.cyan.opacity(0.7), Color.purple.opacity(0.3)],
-                                             startPoint: .topLeading,
-                                             endPoint: .bottomTrailing))
-                        .shadow(color: Color.secondary, radius: 25, x: -10, y: 10)
+                    
+                    DetailsWidgetGradient()
                     
                     VStack(alignment: .center) {
-                        // Content goes here
                         CachedImage(url: apodData.url) { phase in
                             switch phase {
                             case .empty:
                                 ProgressView()
+                                    .frame(height: 200)
                             case .success(let image):
                                 image
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .cornerRadius(30)
                                     .padding(.all, 7)
-                            case .failure(let error):
-                                // TODO: FKJ - See how you will handle the error.
+                            case .failure(_):
                                 EmptyView()
                             @unknown default:
                                 EmptyView()
                             }
                         }
                         
-                        Divider()
-                            .frame(height: 1)
-                            .overlay(.black)
-                            .padding(.leading, 15)
-                            .padding(.trailing, 15)
-                            .cornerRadius(30)
+                        DetailsViewDivider()
                         
                         VStack(alignment: .leading, spacing: 5) {
                             Text(apodData.title)
@@ -71,6 +62,27 @@ struct DetailsView: View {
                 .ignoresSafeArea()
         }
         
+    }
+}
+
+struct DetailsWidgetGradient: View {
+    var body: some View {
+        RoundedRectangle(cornerRadius: 30)
+            .fill(LinearGradient(colors: [Color.cyan.opacity(0.7), Color.purple.opacity(0.3)],
+                                 startPoint: .topLeading,
+                                 endPoint: .bottomTrailing))
+            .shadow(color: Color.secondary, radius: 25, x: -10, y: 10)
+    }
+}
+
+struct DetailsViewDivider: View {
+    var body: some View {
+        Divider()
+            .frame(height: 1)
+            .overlay(.black)
+            .padding(.leading, 15)
+            .padding(.trailing, 15)
+            .cornerRadius(30)
     }
 }
 
