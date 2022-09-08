@@ -47,7 +47,7 @@ struct DashboardView: View {
                                     Spacer()
                                     HStack {
                                         Spacer()
-                                        Text(data.date)
+                                        Text(data.title)
                                             .foregroundColor(.white)
                                             .font(.footnote)
                                             .padding()
