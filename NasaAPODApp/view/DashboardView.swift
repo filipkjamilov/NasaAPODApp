@@ -10,6 +10,13 @@ struct DashboardView: View {
         
         ScrollView(.vertical, showsIndicators: false, content: {
             LazyVStack {
+                HStack {
+                    Text("Limit: \(apodData.limit)/\(apodData.remainingLimit) per hour")
+                        .font(.footnote)
+                        .padding(.leading, 20)
+                    Spacer()
+                }
+                Divider()
                 ForEach(apodData.data.filter({ $0.media_type == "image" }).reversed(), id: \.self) { data in
                     
                     CachedImage(url: data.url) { state in

@@ -18,11 +18,14 @@ class APODViewModel: ObservableObject {
     }
     
     @Published var data: [APODData] = []
+    @Published var limit: String = "0"
+    @Published var remainingLimit: String = "0"
     
     // TODO: FKJ - Temporary solution to take the picture from the previous day,
     // as the server date and the local date are not the same.
     public var endDate: Date = Calendar.current.date(byAdding: .day, value: -1, to: .now)!
     public var startDate: Date = Calendar.current.date(byAdding: .day, value: -5, to: .now)!
+    
     
     public func fetchOnViewDidLoad() {
         fetchData(from: startDate, to: endDate)
@@ -42,7 +45,7 @@ class APODViewModel: ObservableObject {
         
         guard let url = URL(string: url) else { return }
         
-        URLSession.shared.dataTask(with: url) { data, _, error in
+        URLSession.shared.dataTask(with: url) { data, response, error in
             if let data = data {
                 do {
                     let decodedData = try JSONDecoder().decode([APODData].self, from: data)
@@ -54,10 +57,17 @@ class APODViewModel: ObservableObject {
                 }
             }
             
+            if let httpResponse = response as? HTTPURLResponse {
+                DispatchQueue.main.async {
+                    self.limit = httpResponse.allHeaderFields["x-ratelimit-limit"] as? String ?? "0"
+                    self.remainingLimit = httpResponse.allHeaderFields["x-ratelimit-remaining"] as? String ?? "0"
+                }
+            }
+            
         }.resume()
     }
     
-    private func handleError(with error: Error){
+    private func handleError(with error: Error) {
         print("Error occurred!")
     }
     
